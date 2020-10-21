@@ -1,0 +1,19 @@
+{
+  "name": "olo",
+  "version": "1.0.0",
+  "description": "pizza toppings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EtiWitty/olo.git"
+  },
+  "author": "Atiyeh Keshavarz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EtiWitty/olo/issues"
+  },
+  "homepage": "https://github.com/EtiWitty/olo#readme"
+}
