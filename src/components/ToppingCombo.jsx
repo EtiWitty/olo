@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { getTopCombos } from "../lib/combos";
+import { OLO_JSON_URL } from '../lib/config';
+import { PROXY_URL } from '../lib/config';
 
 class ToppingCombo extends React.Component{
     constructor(props) {
@@ -15,10 +17,8 @@ class ToppingCombo extends React.Component{
     
     handleSubmit(event) {
         event.preventDefault();
-        const proxyurl = "https://cors-anywhere.herokuapp.com/"; // by https://stackoverflow.com/a/43881141
-        const url = "https://www.olo.com/pizzas.json";
         
-        axios.get(`${proxyurl}${url}`)
+        axios.get(`${PROXY_URL}${OLO_JSON_URL}`)
             .then((res) => {
                 console.log(res);
                 const topCombos = getTopCombos(res.data);
