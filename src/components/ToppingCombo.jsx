@@ -17,7 +17,6 @@ class ToppingCombo extends React.Component{
     
     handleSubmit(event) {
         event.preventDefault();
-        
         axios.get(`${PROXY_URL}${OLO_JSON_URL}`)
             .then((res) => {
                 console.log(res);
@@ -28,6 +27,7 @@ class ToppingCombo extends React.Component{
                 console.log(error);
             })
     }
+    
 
     render() {
         return(

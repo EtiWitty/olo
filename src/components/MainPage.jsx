@@ -8,7 +8,7 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div className="back-image">
+            <div>
                 <ToppingCombo />
             </div>
         )

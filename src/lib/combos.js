@@ -29,9 +29,11 @@ export function getTopCombos(pizzas) {
     }
 
     const pizzaPairs = [];
+
     for(let toppingsKey in frequencyMap) {
         pizzaPairs.push([toppingsKey, frequencyMap[toppingsKey]]);
     }
+    
     const topPizzas = pizzaPairs
         .sort((a, b) => b[1] - a[1])
         .slice(0, 20)
