@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { getTopCombos } from "../lib/combos";
 
 class ToppingCombo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            results: []
+            topCombos: [], // Array of { rank, toppings (string[]), frequency }
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +21,8 @@ class ToppingCombo extends React.Component{
         axios.get(`${proxyurl}${url}`)
             .then((res) => {
                 console.log(res);
-                this.setState({ results: res.data});
+                const topCombos = getTopCombos(res.data);
+                this.setState({ topCombos: topCombos });
             })
             .catch((error) => {
                 console.log(error);
@@ -39,19 +41,28 @@ class ToppingCombo extends React.Component{
                 </form>
 
                 <table className="pizza-results">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <td>
-                                <ul>
-                                    { this.state.results.map((pizza, i) => (
-                                        <li key={i} >
-                                            {pizza.toppings}
-                                        </li>
-                                        ))
-                                    } 
-                                </ul>
-                            </td>
+                            <th>Rank</th>
+                            <th>Toppings</th>
+                            <th>Frequency</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        { this.state.topCombos.map((combo, i) => (
+                            <tr key={i}>
+                                <td>{combo.rank}</td>
+                                <td>
+                                    <ul>
+                                    { combo.toppings.map((topping, j) => (
+                                        <li key={j}>{topping}</li>
+                                    ))}
+                                    </ul>
+                                </td>
+                                <td>{combo.frequency}</td>
+                            </tr>
+                            ))
+                        } 
                     </tbody>
                 </table>
             </div>
